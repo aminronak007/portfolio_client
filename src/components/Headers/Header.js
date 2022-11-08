@@ -16,7 +16,7 @@ const Header = () => {
                         tag="h5"
                         className="text-uppercase text-muted mb-0"
                       >
-                        <Link to="profile">View Profile</Link>
+                        <Link to="my-profile">View Profile</Link>
                       </CardTitle>
                       {/* <span className="h2 font-weight-bold mb-0">350,897</span> */}
                     </div>

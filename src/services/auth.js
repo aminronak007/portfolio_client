@@ -4,7 +4,7 @@ export const login = (data) =>
   api().post("/admin/login", data).then(handleResponse).catch(handleError);
 
 export const signout = () =>
-  api().post("/admin/signout").then(handleResponse).catch(handleError);
+  api().get("/admin/logout").then(handleResponse).catch(handleError);
 
 export const addProfile = (token, data) =>
   api(token)

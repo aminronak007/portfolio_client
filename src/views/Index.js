@@ -1,7 +1,18 @@
-import { Button, Card, CardHeader, Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import Header from "components/Headers/Header.js";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import AuthActions from "redux/auth/actions";
+import { useEffect } from "react";
+
+const { checkAdmin } = AuthActions;
 
 const Index = (props) => {
+  const { checkAdmin, token } = props;
+  useEffect(() => {
+    checkAdmin({ _token: token });
+  });
   return (
     <>
       <Header />
@@ -43,4 +54,14 @@ const Index = (props) => {
   );
 };
 
-export default Index;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth?.token,
+    isLoading: state.loader.isLoading,
+  };
+};
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, { checkAdmin })
+)(Index);

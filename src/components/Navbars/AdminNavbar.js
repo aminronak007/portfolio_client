@@ -18,13 +18,20 @@ import {
   Media,
 } from "reactstrap";
 import { signout } from "services/auth";
+import AuthActions from "redux/auth/actions";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
 
+const { adminLogout } = AuthActions;
 const AdminNavbar = (props) => {
+  const { history, adminLogout } = props;
   const logout = () => {
     signout().then((res) => {
-      if (res.data.loggedOut === 1) {
-        toast.success(res.message);
-        window.location.href = "/auth/login";
+      if (res) {
+        adminLogout();
+        toast.error(res);
+        history.push("/auth/login");
       }
     });
   };
@@ -104,4 +111,13 @@ const AdminNavbar = (props) => {
   );
 };
 
-export default AdminNavbar;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth?.token,
+  };
+};
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, { adminLogout })
+)(AdminNavbar);

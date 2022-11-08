@@ -60,9 +60,11 @@ const Profile = () => {
           email: res.data.email,
           first_name: res.data.firstName,
           birthdate: moment(res.data.birthdate).format("YYYY-MM-DD"),
+          age: Math.floor(moment().diff(res.data.birthdate, "years", true)),
           last_name: res.data.lastName,
           address: res.data.address.address,
           city: res.data.address.city,
+          state: res.data.address.state,
           country: res.data.address.country,
           pincode: res.data.address.pincode,
           aboutme: res.data.aboutMe,
@@ -124,11 +126,14 @@ const Profile = () => {
                 <div className="text-center mt-md-5">
                   <h3>
                     {userDetails?.fullName}
-                    <span className="font-weight-light">, 26</span>
+                    <span className="font-weight-light">
+                      , {userDetails?.age}
+                    </span>
                   </h3>
                   <div className="h5 font-weight-300">
                     <i className="ni location_pin mr-2" />
-                    {userDetails?.city}, Gujarat, {userDetails?.country}
+                    {userDetails?.city}, {userDetails?.state},{" "}
+                       {userDetails?.country}
                   </div>
                   <div className="h5 mt-4">
                     <i className="ni business_briefcase-24 mr-2" />
@@ -257,7 +262,7 @@ const Profile = () => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col lg="4">
+                      <Col lg="6">
                         <FormGroup>
                           <label
                             className="form-control-label"
@@ -275,25 +280,7 @@ const Profile = () => {
                           />
                         </FormGroup>
                       </Col>
-                      <Col lg="4">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-country"
-                          >
-                            Country
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            defaultValue={userDetails.country}
-                            placeholder="Country"
-                            type="text"
-                            onChange={(e) => handleChange(e)}
-                            name="country"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col lg="4">
+                      <Col lg="6">
                         <FormGroup>
                           <label
                             className="form-control-label"
@@ -308,6 +295,42 @@ const Profile = () => {
                             type="number"
                             onChange={(e) => handleChange(e)}
                             name="pincode"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="6">
+                        <FormGroup>
+                          <label
+                            className="form-control-label"
+                            htmlFor="input-state"
+                          >
+                            State
+                          </label>
+                          <Input
+                            className="form-control-alternative"
+                            defaultValue={userDetails.state}
+                            placeholder="State"
+                            type="text"
+                            onChange={(e) => handleChange(e)}
+                            name="state"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="6">
+                        <FormGroup>
+                          <label
+                            className="form-control-label"
+                            htmlFor="input-country"
+                          >
+                            Country
+                          </label>
+                          <Input
+                            className="form-control-alternative"
+                            defaultValue={userDetails.country}
+                            placeholder="Country"
+                            type="text"
+                            onChange={(e) => handleChange(e)}
+                            name="country"
                           />
                         </FormGroup>
                       </Col>

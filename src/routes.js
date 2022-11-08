@@ -1,7 +1,7 @@
 import Index from "views/Index.js";
 import Profile from "views/profile/Profile";
 // import Register from "views/examples/Register.js";
-import Login from "views/auth/Login";
+import Login from "views/auth/Login/Login";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 
