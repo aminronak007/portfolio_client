@@ -79,7 +79,7 @@ const Login = (props) => {
 
   return (
     <Fragment>
-      {isLoading ? null : (
+      {isLoading && (
         <Col lg="5" md="7">
           <Card className="bg-secondary shadow border-0">
             <CardBody className="px-lg-5 py-lg-5">

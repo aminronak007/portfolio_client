@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "reactstrap";
 
 const UserHeader = (props) => {
-  let { userDetails } = props;
+  let { values } = props;
   return (
     <>
       <div
@@ -21,13 +21,12 @@ const UserHeader = (props) => {
         {/* Header container */}
         <Container className="d-flex align-items-center" fluid>
           <Row>
-            <Col lg="7" md="10">
+            <Col lg="8" md="10">
               <h1 className="display-2 text-white">
-                Hello, {userDetails.fullName}
+                Hello, {values?.fullName}
               </h1>
-              <p className="text-white mt-0 mb-5">
-                This is your profile page. You can see the progress you've made
-                with your work and manage your projects or assigned tasks
+              <p className="text-white mt-0 mb-5 text-justify">
+                {values?.aboutme}
               </p>
             </Col>
           </Row>

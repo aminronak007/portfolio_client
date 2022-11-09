@@ -14,7 +14,7 @@ import LOADER from "./helpers/CssHelper";
 import { HashLoader } from "react-spinners";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, useLocation } from "react-router-dom";
 import { Fragment } from "react";
 import AuthActions from "redux/auth/actions";
 import { useEffect } from "react";
@@ -25,6 +25,7 @@ const { fetching } = LoaderActions;
 
 const App = (props) => {
   const { token, history, isLoading, checkAdmin } = props;
+  let path = useLocation();
 
   useEffect(() => {
     checkAdmin();
@@ -44,8 +45,10 @@ const App = (props) => {
       <ToastContainer />
       {isLoading ? (
         <HashLoader
-          color="#ffffff"
-          cssOverride={LOADER}
+          color={path.pathname === "/auth/login" ? "#ffffff" : "#000000"}
+          cssOverride={
+            path.pathname === "/auth/login" ? LOADER.two : LOADER.one
+          }
           loading={isLoading}
           size={50}
         />
