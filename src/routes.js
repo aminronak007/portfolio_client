@@ -1,5 +1,6 @@
 import Index from "views/Index.js";
 import Profile from "views/profile/Profile";
+import Portfolio from "views/portfolio/portfolio";
 // import Register from "views/examples/Register.js";
 import Login from "views/auth/Login/Login";
 import Tables from "views/examples/Tables.js";
@@ -13,12 +14,18 @@ var routes = [
     component: Index,
     layout: "/admin",
   },
-
   {
     path: "/my-profile",
     name: "My Profile",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
+    layout: "/admin",
+  },
+  {
+    path: "/my-portfolio",
+    name: "My Portfolio",
+    icon: "ni ni-image",
+    component: Portfolio,
     layout: "/admin",
   },
   {

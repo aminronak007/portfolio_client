@@ -39,6 +39,7 @@ const Login = (props) => {
     isLoading,
   } = props;
 
+  console.log();
   useEffect(() => {
     if (token) {
       history.push("/admin/dashboard");
@@ -73,13 +74,13 @@ const Login = (props) => {
             toast.error(res.error);
           }
         });
-      }, 1000);
+      }, 2000);
     }
   };
 
   return (
     <Fragment>
-      {isLoading && (
+      {!isLoading && (
         <Col lg="5" md="7">
           <Card className="bg-secondary shadow border-0">
             <CardBody className="px-lg-5 py-lg-5">

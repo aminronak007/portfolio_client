@@ -67,7 +67,7 @@ const Profile = (props) => {
               toast.error(res.message);
             }
           });
-        }, 3000);
+        }, 1500);
       } else {
         setTimeout(() => {
           addProfile(token, values).then((res) => {
@@ -81,7 +81,7 @@ const Profile = (props) => {
               setProfileFlag(false);
             }
           });
-        }, 1000);
+        }, 1500);
       }
     }
   };
@@ -142,7 +142,6 @@ const Profile = (props) => {
                       <Button
                         className="mr-4"
                         color="info"
-                        href="#pablo"
                         onClick={(e) => e.preventDefault()}
                         size="sm"
                       >
@@ -151,7 +150,6 @@ const Profile = (props) => {
                       <Button
                         className="float-right"
                         color="default"
-                        href="#pablo"
                         onClick={(e) => e.preventDefault()}
                         size="sm"
                       >
@@ -416,7 +414,6 @@ const Profile = (props) => {
                           {profileFlag ? (
                             <Button
                               color="default"
-                              href="#pablo"
                               onClick={handleSubmit}
                               size="xm"
                             >
@@ -426,7 +423,6 @@ const Profile = (props) => {
                             <Button
                               className="mr-4"
                               color="info"
-                              href="#pablo"
                               onClick={handleSubmit}
                               size="xm"
                             >
