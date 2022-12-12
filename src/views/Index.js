@@ -9,18 +9,18 @@ import { useEffect } from "react";
 const { checkAdmin } = AuthActions;
 
 const Index = (props) => {
-  const { checkAdmin, token } = props;
-  useEffect(() => {
-    checkAdmin({ _token: token });
-  });
-  return (
-    <>
-      <Header />
-      {/* Page content */}
-      <Container className="mt--7" fluid>
-        <Row className="mt-5">
-          <Col className="mb-5 mb-xl-0" xl="12">
-            {/* <Card className="shadow">
+    const { checkAdmin, token } = props;
+    useEffect(() => {
+        checkAdmin({ _token: token });
+    });
+    return (
+        <>
+            <Header />
+            {/* Page content */}
+            <Container className="mt--7" fluid>
+                <Row className="mt-5">
+                    <Col className="mb-5 mb-xl-0" xl="12">
+                        {/* <Card className="shadow">
               <CardHeader className="border-0">
                 <Row className="align-items-center">
                   <div className="col">
@@ -47,21 +47,21 @@ const Index = (props) => {
                 </Row>
               </CardHeader>
             </Card> */}
-          </Col>
-        </Row>
-      </Container>
-    </>
-  );
+                    </Col>
+                </Row>
+            </Container>
+        </>
+    );
 };
 
 const mapStateToProps = (state) => {
-  return {
-    token: state.auth?.token,
-    isLoading: state.loader.isLoading,
-  };
+    return {
+        token: state.auth?.token,
+        isLoading: state.loader.isLoading,
+    };
 };
 
 export default compose(
-  withRouter,
-  connect(mapStateToProps, { checkAdmin })
+    withRouter,
+    connect(mapStateToProps, { checkAdmin })
 )(Index);
